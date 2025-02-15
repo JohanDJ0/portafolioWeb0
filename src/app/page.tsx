@@ -1,19 +1,18 @@
 "use client"; // Agrega esto al principio del archivo
+import Image from "next/image"; // Importa el componente Image
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { FiMoon, FiSun, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { TypeAnimation } from "react-type-animation";
 
 const Portfolio = () => {
-  
   const [darkMode, setDarkMode] = useState(false); // Inicializa con un valor por defecto
   useEffect(() => {
     // Solo se ejecuta en el cliente
     const savedDarkMode = localStorage.getItem("darkMode") === "true";
     setDarkMode(savedDarkMode);
   }, []);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const projects = [
     {
@@ -41,8 +40,7 @@ const Portfolio = () => {
       title: "Travel App",
       description:
         "An application to organize travel itineraries for Be&Go Agency",
-      image:
-        "https://res.cloudinary.com/dxh55fgry/image/upload/v1739588244/1217791_4873_u1rn9h.jpg",
+        image: "https://res.cloudinary.com/dxh55fgry/image/upload/v1739588244/1217791_4873_u1rn9h.jpg",
       technologies: ["Ionic", "firebase"],
     },
   ];
@@ -77,8 +75,6 @@ const Portfolio = () => {
         "Implemented Odoo 16 for the backend and used APIs like Auth0 and Material UI to improve functionality and user experience.",
     },
   ];
- 
-  
 
   return (
     <div
@@ -129,10 +125,12 @@ const Portfolio = () => {
         className="container mx-auto px-6 py-20 text-center"
       >
         <div className="relative w-32 h-32 mx-auto mb-8">
-          <img
+          <Image
             src="https://res.cloudinary.com/dxh55fgry/image/upload/v1739493428/services/124599.jpg"
             alt="Profile"
             className="rounded-full object-cover w-full h-full"
+            width={128} // Especifica el ancho
+            height={128} // Especifica el alto
           />
         </div>
         <h1 className="text-5xl font-bold mb-4">Johan Sinoe De Jesús Torres</h1>
@@ -252,11 +250,14 @@ const Portfolio = () => {
               whileHover={{ scale: 1.02 }}
               className="rounded-lg overflow-hidden shadow-lg"
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-48 object-cover"
-              />
+            <Image
+  src={project.image}
+  alt={project.title}
+  className="w-full h-48 object-cover"
+  width={500}  // Especifica el ancho en píxeles
+  height={200} // Especifica el alto en píxeles
+/>
+
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                 <p className="mb-4">{project.description}</p>
