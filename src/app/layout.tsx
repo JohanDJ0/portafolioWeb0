@@ -49,12 +49,23 @@ export const metadata: Metadata = {
     siteName: "Portafolio de Johan Sinoe De Jesús Torres",
     locale: "es_MX",
     type: "website",
+    images: [
+      {
+        url: "https://res.cloudinary.com/dxh55fgry/image/upload/v1749000361/IMG-20221103-WA0015_t6pn6a.jpg",
+        width: 800,
+        height: 800,
+        alt: "Perfil de Johan Sinoe De Jesús Torres"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Johan Sinoe De Jesús Torres | Desarrollador Full Stack | Portafolio Web",
     description:
       "Portafolio de Johan Sinoe De Jesús Torres, Desarrollador Full Stack con experiencia en React, Node.js, Web 3.0, e-commerce y apps móviles.",
+    images: [
+      "https://res.cloudinary.com/dxh55fgry/image/upload/v1749000361/IMG-20221103-WA0015_t6pn6a.jpg"
+    ]
   },
 };
 
