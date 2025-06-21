@@ -89,6 +89,7 @@ export default function RootLayout({
               "name": "Johan Sinoe De Jesús Torres",
               "jobTitle": "Desarrollador Full Stack",
               "url": "https://portafolioweb0-production.up.railway.app/",
+              "image": "https://res.cloudinary.com/dxh55fgry/image/upload/v1749000361/IMG-20221103-WA0015_t6pn6a.jpg",
               "email": "johansinoe2049@gmail.com",
               "telephone": "+52 249 170 97 19",
               "address": {

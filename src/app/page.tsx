@@ -163,7 +163,7 @@ const Portfolio = () => {
         <div className="relative w-32 h-32 mx-auto mb-8">
           <Image
             src="https://res.cloudinary.com/dxh55fgry/image/upload/v1749000361/IMG-20221103-WA0015_t6pn6a.jpg"
-            alt="Perfil"
+            alt="Foto de perfil de Johan Sinoe De Jesús Torres"
             className="rounded-full object-cover w-full h-full"
             width={128}
             height={128}
