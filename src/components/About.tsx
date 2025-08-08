@@ -1,24 +1,30 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-
-// Función para manejar la descarga del CV
-const handleDownloadCV = () => {
-  const link = document.createElement('a');
-  link.href = '/Cv Johan Sinoe De Jesus Torres Desarrollo de software.pdf';
-  link.download = 'CV_Johan_Torres_Desarrollo_Software.pdf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
 
 interface AboutProps {
   darkMode: boolean;
 }
 
-
-
 const About: React.FC<AboutProps> = ({ darkMode }) => {
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  // Función para manejar la descarga del CV
+  const handleDownloadCV = () => {
+    setIsDownloading(true);
+    
+    const link = document.createElement('a');
+    link.href = '/Cv Johan Sinoe De Jesus Torres Desarrollo de software.pdf';
+    link.download = 'CV_Johan_Torres_Desarrollo_Software.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Mostrar mensaje de descarga completada después de 2 segundos
+    setTimeout(() => {
+      setIsDownloading(false);
+    }, 2000);
+  };
 
   const attributeCards = [
     {
@@ -118,23 +124,41 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
               </div>
             </div>
 
-                         {/* Botón Descargar CV */}
-             <motion.button
-               onClick={handleDownloadCV}
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.6, delay: 0.6 }}
-               whileHover={{ scale: 1.05 }}
-               whileTap={{ scale: 0.95 }}
-               className={`px-8 py-4 rounded-lg font-medium transition-all duration-300 flex items-center gap-3 cursor-pointer text-lg ${
-                 darkMode 
-                   ? 'bg-[#17817b] text-white hover:bg-[#20bfa9]' 
-                   : 'bg-[#17817b] text-white hover:bg-[#20bfa9]'
-               }`}
-             >
-               <span className="text-xl">⬇️</span>
-               Descargar CV
-             </motion.button>
+            {/* Botón Descargar CV */}
+            <div className="space-y-3">
+              <motion.button
+                onClick={handleDownloadCV}
+                disabled={isDownloading}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                whileHover={{ scale: isDownloading ? 1 : 1.05 }}
+                whileTap={{ scale: isDownloading ? 1 : 0.95 }}
+                className={`px-8 py-4 rounded-lg font-medium transition-all duration-300 flex items-center gap-3 cursor-pointer text-lg ${
+                  isDownloading 
+                    ? 'bg-gray-400 cursor-not-allowed' 
+                    : darkMode 
+                      ? 'bg-[#17817b] text-white hover:bg-[#20bfa9]' 
+                      : 'bg-[#17817b] text-white hover:bg-[#20bfa9]'
+                }`}
+              >
+                <span className="text-xl">
+                  {isDownloading ? '⏳' : '⬇️'}
+                </span>
+                {isDownloading ? 'Descargando...' : 'Descargar CV'}
+              </motion.button>
+              
+              {/* Mensaje de descarga */}
+              {isDownloading && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-sm text-green-600 text-center font-medium"
+                >
+                  ✅ Descarga iniciada. Revisa tu carpeta de descargas.
+                </motion.div>
+              )}
+            </div>
           </motion.div>
 
           {/* Columna derecha - Grid de atributos */}
