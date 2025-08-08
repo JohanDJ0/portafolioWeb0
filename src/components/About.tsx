@@ -2,6 +2,25 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+// Función para manejar la descarga del CV
+const handleDownloadCV = () => {
+  // Detectar si es dispositivo móvil
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  
+  if (isMobile) {
+    // Para móviles, abrir directamente en nueva pestaña
+    window.open('/Cv Johan Sinoe De Jesus Torres Desarrollo de software.pdf', '_blank');
+  } else {
+    // Para desktop, usar descarga directa
+    const link = document.createElement('a');
+    link.href = '/Cv Johan Sinoe De Jesus Torres Desarrollo de software.pdf';
+    link.download = 'CV_Johan_Torres_Desarrollo_Software.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+};
+
 interface AboutProps {
   darkMode: boolean;
 }
@@ -63,7 +82,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
       </motion.div>
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Columna izquierda - Descripción personal */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -72,10 +91,10 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-3xl font-bold mb-6 text-[#17817b]">
+              <h3 className="text-4xl font-bold mb-8 text-[#17817b]">
                 Profesional creativo y comprometido
               </h3>
-              <div className="space-y-4 text-lg leading-relaxed">
+              <div className="space-y-6 text-xl leading-relaxed">
                 <p>
                   Soy una persona apasionada por la innovación y el desarrollo de soluciones que realmente importen. Mi enfoque se centra en combinar creatividad y técnica para crear experiencias excepcionales que conecten con las personas.
                 </p>
@@ -87,15 +106,15 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
 
             {/* Mis valores */}
             <div>
-              <h4 className="text-xl font-bold mb-4 text-[#17817b]">Mis valores</h4>
-              <div className="flex flex-wrap gap-3">
+              <h4 className="text-2xl font-bold mb-6 text-[#17817b]">Mis valores</h4>
+              <div className="flex flex-wrap gap-4">
                 {values.map((value, index) => (
                   <motion.span
                     key={index}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                    className={`px-4 py-2 rounded-full text-sm font-medium border ${
+                    className={`px-6 py-3 rounded-full text-base font-medium border ${
                       darkMode 
                         ? 'bg-gray-800 text-gray-200 border-gray-600' 
                         : 'bg-gray-100 text-gray-700 border-gray-300'
@@ -109,22 +128,22 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
             </div>
 
                          {/* Botón Descargar CV */}
-             <motion.a
-               href="/Cv Johan Sinoe De Jesus Torres Desarrollo de software.pdf"
-               download="CV_Johan_Torres_Desarrollo_Software.pdf"
+             <motion.button
+               onClick={handleDownloadCV}
                initial={{ opacity: 0, y: 20 }}
                whileInView={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.6, delay: 0.6 }}
                whileHover={{ scale: 1.05 }}
-               className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 cursor-pointer ${
+               whileTap={{ scale: 0.95 }}
+               className={`px-8 py-4 rounded-lg font-medium transition-all duration-300 flex items-center gap-3 cursor-pointer text-lg ${
                  darkMode 
                    ? 'bg-[#17817b] text-white hover:bg-[#20bfa9]' 
                    : 'bg-[#17817b] text-white hover:bg-[#20bfa9]'
                }`}
              >
-               <span>⬇️</span>
+               <span className="text-xl">⬇️</span>
                Descargar CV
-             </motion.a>
+             </motion.button>
           </motion.div>
 
           {/* Columna derecha - Grid de atributos */}
@@ -132,7 +151,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-2 gap-4"
+            className="grid grid-cols-2 gap-6"
           >
             {attributeCards.map((card, index) => (
               <motion.div
@@ -144,19 +163,19 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
                   scale: 1.05, 
                   boxShadow: '0 10px 25px rgba(0,0,0,0.1)' 
                 }}
-                className={`p-6 rounded-lg border transition-all duration-300 ${
+                className={`p-8 rounded-lg border transition-all duration-300 ${
                   darkMode 
                     ? 'bg-gray-800 border-gray-600' 
                     : 'bg-white border-gray-200'
                 }`}
               >
-                <div className="text-2xl mb-3 text-[#17817b]">{card.icon}</div>
-                <h4 className={`font-bold mb-2 ${
+                <div className="text-3xl mb-4 text-[#17817b]">{card.icon}</div>
+                <h4 className={`font-bold mb-3 text-lg ${
                   darkMode ? 'text-gray-200' : 'text-gray-800'
                 }`}>
                   {card.title}
                 </h4>
-                <p className={`text-sm ${
+                <p className={`text-base ${
                   darkMode ? 'text-gray-400' : 'text-gray-600'
                 }`}>
                   {card.subtitle}
