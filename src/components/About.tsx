@@ -6,72 +6,9 @@ interface AboutProps {
   darkMode: boolean;
 }
 
-interface SkillItem {
-  label?: string;
-  value: string;
-}
 
-interface Skill {
-  title: string;
-  icon: string;
-  items: SkillItem[];
-}
 
 const About: React.FC<AboutProps> = ({ darkMode }) => {
-  const skills: Record<string, Skill> = {
-    frontend: {
-      title: "Frontend",
-      icon: "💻",
-      items: [
-        { label: "Frameworks/Librerías", value: "React, Next.js, Vue.js, Ionic" },
-        { label: "Estilos", value: "Tailwind CSS, Material UI, CSS-in-JS (Styled Components)" },
-        { label: "Móvil", value: "React Native, Ionic" },
-        { label: "Enfoque", value: "Interfaces responsivas, optimización de rendimiento" }
-      ]
-    },
-    backend: {
-      title: "Backend",
-      icon: "🖥️",
-      items: [
-        { label: "Lenguajes/Frameworks", value: "Node.js, Express.js" },
-        { label: "APIs", value: "REST" },
-        { label: "Autenticación", value: "JWT, Auth0, Firebase Auth" }
-      ]
-    },
-    database: {
-      title: "Bases de Datos",
-      icon: "🗄️",
-      items: [
-        { label: "SQL", value: "MySQL, PostgreSQL" },
-        { label: "NoSQL", value: "MongoDB, Firebase Firestore" }
-      ]
-    },
-    cloud: {
-      title: "Cloud/DevOps",
-      icon: "☁️",
-      items: [
-        { value: "Firebase (Auth, Firestore, Cloud Functions)" }
-      ]
-    },
-    tools: {
-      title: "Herramientas",
-      icon: "🧰",
-      items: [
-        { value: "Control de versiones: Git/GitHub" },
-        { value: "Diseño/Prototipado: Figma" },
-        { value: "Testing APIs: Postman" },
-        { value: "Desarrollo: React Developer Tools, Vite" }
-      ]
-    }
-  };
-
-  const softSkills = [
-    "Liderazgo técnico (gestión de equipos de 3-5 personas)",
-    "Metodologías ágiles: Scrum, Kanban",
-    "Comunicación efectiva (stakeholders, equipos multidisciplinarios)",
-    "Resolución de problemas (enfoque en eficiencia y UX)",
-    "Adaptabilidad (Web 3.0, proyectos académicos/profesionales)"
-  ];
 
   const attributeCards = [
     {
