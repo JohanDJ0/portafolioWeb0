@@ -3,18 +3,28 @@ import Image from "next/image"; // Importa el componente Image
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FiMoon, FiSun, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FiMoon, FiSun, FiGithub, FiLinkedin, FiMail, FiMenu, FiX } from "react-icons/fi";
 import { TypeAnimation } from "react-type-animation";
 import Projects from "../components/Projects";
 import About from "../components/About";
 
 const Portfolio = () => {
   const [darkMode, setDarkMode] = useState(false); // Inicializa con un valor por defecto
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
   useEffect(() => {
     // Solo se ejecuta en el cliente
     const savedDarkMode = localStorage.getItem("darkMode") === "true";
     setDarkMode(savedDarkMode);
   }, []);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
 
 
 
@@ -67,6 +77,8 @@ const Portfolio = () => {
       <nav className="sticky top-0 z-50 backdrop-blur-md bg-opacity-80 border-b">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold">Portafolio</h1>
+          
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <a href="#about" className="hover:text-[#17817b] transition-colors">
               Sobre mí
@@ -97,7 +109,66 @@ const Portfolio = () => {
               {darkMode ? <FiSun size={24} /> : <FiMoon size={24} />}
             </button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center space-x-4">
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Cambiar modo oscuro/claro"
+            >
+              {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+            </button>
+            <button
+              onClick={toggleMobileMenu}
+              className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Abrir menú de navegación"
+            >
+              {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden border-t"
+          >
+            <div className="container mx-auto px-6 py-4 space-y-4">
+              <a
+                href="#about"
+                onClick={closeMobileMenu}
+                className="block py-2 hover:text-[#17817b] transition-colors font-medium"
+              >
+                Sobre mí
+              </a>
+              <a
+                href="#experience"
+                onClick={closeMobileMenu}
+                className="block py-2 hover:text-[#17817b] transition-colors font-medium"
+              >
+                Experiencia
+              </a>
+              <a
+                href="#portfolio"
+                onClick={closeMobileMenu}
+                className="block py-2 hover:text-[#17817b] transition-colors font-medium"
+              >
+                Proyectos
+              </a>
+              <a
+                href="#contact"
+                onClick={closeMobileMenu}
+                className="block py-2 hover:text-[#17817b] transition-colors font-medium"
+              >
+                Contacto
+              </a>
+            </div>
+          </motion.div>
+        )}
       </nav>
 
       {/* Hero Section */}
