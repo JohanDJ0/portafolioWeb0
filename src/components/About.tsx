@@ -4,21 +4,12 @@ import { motion } from "framer-motion";
 
 // Función para manejar la descarga del CV
 const handleDownloadCV = () => {
-  // Detectar si es dispositivo móvil
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
-  
-  if (isMobile) {
-    // Para móviles, abrir directamente en nueva pestaña
-    window.open('/Cv Johan Sinoe De Jesus Torres Desarrollo de software.pdf', '_blank');
-  } else {
-    // Para desktop, usar descarga directa
-    const link = document.createElement('a');
-    link.href = '/Cv Johan Sinoe De Jesus Torres Desarrollo de software.pdf';
-    link.download = 'CV_Johan_Torres_Desarrollo_Software.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
+  const link = document.createElement('a');
+  link.href = '/Cv Johan Sinoe De Jesus Torres Desarrollo de software.pdf';
+  link.download = 'CV_Johan_Torres_Desarrollo_Software.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 };
 
 interface AboutProps {
