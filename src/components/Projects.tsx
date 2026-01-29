@@ -20,12 +20,14 @@ interface ProjectsProps {
   darkMode: boolean;
 }
 
+const PROJECT_PLACEHOLDER = "/project-placeholder.svg";
+
 const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
   const projects: Project[] = [
     {
       title: "ConRadMed - Sitio Web Corporativo",
       description: "Desarrollo de sitio web corporativo para Conrad Medical, empresa especializada en equipos médicos y soluciones de salud.",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80",
+      image: PROJECT_PLACEHOLDER,
       technologies: ["Vue.js", "PostgreSQL ", "Tailwind CSS", "TypeScript", "Rest api,"],
       achievements: [
         "Sitio web corporativo profesional y responsivo",
@@ -40,7 +42,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
     {
       title: "WE ARE - Plataforma de Comercio Local",
       description: "Desarrollo integral de una plataforma para digitalizar negocios locales, permitiendo a más de 50 comercios gestionar productos, ventas y clientes.",
-      image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&w=800&q=80",
+      image: PROJECT_PLACEHOLDER,
       technologies: ["React", "Vite", "Tailwind CSS", "Node.js", "Express.js", "JWT", "MySQL"],
       achievements: [
         "Empoderamiento digital de más de 50 negocios locales",
@@ -55,7 +57,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
     {
       title: "Plataforma Web 3.0 - Urbanika",
       description: "Componentes interactivos y optimización de rendimiento para una plataforma Web 3.0, con integración de tecnologías blockchain.",
-      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+      image: PROJECT_PLACEHOLDER,
       technologies: ["React", "Tailwind CSS", "Web3.js"],
       achievements: [
         "20% de mejora en tiempos de carga",
@@ -69,7 +71,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
     {
       title: "E-commerce - SolucionesGAP",
       description: "Plataforma de comercio electrónico desarrollada en equipo, con gestión de productos, pagos y usuarios.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
+      image: PROJECT_PLACEHOLDER,
       technologies: ["React", "Styled Components", "Node.js", "MySQL"],
       achievements: [
         "Entrega a tiempo en 4 meses",
@@ -83,7 +85,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
     {
       title: "App de Reseñas de Negocios - UTTECAM",
       description: "Aplicación multiplataforma (web + móvil) para gestionar y consultar reseñas de negocios locales.",
-      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+      image: PROJECT_PLACEHOLDER,
       technologies: ["React", "React Native", "Material UI", "Odoo 16", "Auth0"],
       achievements: [
         "90% de reutilización de código entre plataformas",
@@ -97,7 +99,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
     {
       title: "App Agencia de Viajes (Be&Go)",
       description: "Sistema de gestión de viajes y personalización de itinerarios para agencia de viajes.",
-      image: "https://res.cloudinary.com/dxh55fgry/image/upload/v1739588244/1217791_4873_u1rn9h.jpg",
+      image: PROJECT_PLACEHOLDER,
       technologies: ["Ionic", "Firebase"],
       achievements: [
         "Automatización de personalización de itinerarios",
@@ -122,7 +124,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
           >
             <Image
               src={project.image}
-              alt={project.title}
+              alt=""
               className="w-full h-56 object-cover"
               width={800}
               height={224}
